@@ -1,8 +1,10 @@
 import classes from './home.module.scss';
 
 import { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
-import axios from 'axios';
+import { useDispatch, useSelector } from 'react-redux';
+// import axios from 'axios';
+
+import { fetchProducts } from '../../services/fetchProducts';
 
 import Product from '../../components/product/Product';
 import Sidebar from '../../components/sidebar/Sidebar';
@@ -10,19 +12,18 @@ import Sort from '../../components/sort/Sort';
 
 const Home = () => {
   const [isLoading, setIsLoading] = useState(true);
-  const [products, setProducts] = useState([]);
 
-  const currentCategory = useSelector((state) => state.category.currentCategory);
+  const dispatch = useDispatch();
+  const currentCategory = useSelector((state) => state.filters.currentCategory);
+  const products = useSelector((state) => state.data.products);
 
   useEffect(() => {
     setIsLoading(true);
     // в API для получения всех пустое значение передать нужно
     const category = currentCategory === 'All' ? '' : currentCategory;
     // limit=9&page=1&
-    axios
-      .get(`https://630244f2c6dda4f287b6a17b.mockapi.io/products?category=${category}`)
-      .then((data) => setProducts(data.data))
-      .then(() => setIsLoading(false));
+    dispatch(fetchProducts(category));
+    setIsLoading(false);
   }, [currentCategory]);
 
   return (

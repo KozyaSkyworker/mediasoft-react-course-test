@@ -4,7 +4,7 @@ const initialValue = {
 
 const ADD_PRODUCTS = 'ADD_PRODUCTS';
 
-export const filtersReducer = (state = initialValue, action) => {
+export const productsReducer = (state = initialValue, action) => {
   switch (action.type) {
     case ADD_PRODUCTS:
       return { products: action.payload };

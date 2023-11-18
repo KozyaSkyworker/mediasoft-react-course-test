@@ -10,7 +10,7 @@ const Sidebar = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   const dispatch = useDispatch();
-  const currentCategory = useSelector((state) => state.category.currentCategory);
+  const currentCategory = useSelector((state) => state.filters.currentCategory);
 
   useEffect(() => {
     axios
