@@ -13,8 +13,8 @@ const Home = () => {
 
   useEffect(() => {
     axios
-      .get('https://dummyjson.com/products?limit=9')
-      .then((data) => setProducts(data.data.products))
+      .get('https://630244f2c6dda4f287b6a17b.mockapi.io/products')
+      .then((data) => setProducts(data.data))
       .then(() => setIsLoading(false));
   }, []);
 

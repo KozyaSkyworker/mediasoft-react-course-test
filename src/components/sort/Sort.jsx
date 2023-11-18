@@ -8,7 +8,10 @@ const Sort = () => {
       <TbArrowsSort />
 
       <ul className={classes.sort__list}>
-        <li className={`${classes.sort__item} ${classes.sort__item_active}`}>Убываию цены</li>
+        <li className={`${classes.sort__item} ${classes.sort__item_active}`}>По рейтингу</li>
+        <li className={`${classes.sort__item}`}>По убыванию цены</li>
+        <li className={`${classes.sort__item}`}>По возрастанию цены</li>
+        <li className={`${classes.sort__item}`}>По названию</li>
       </ul>
     </div>
   );
