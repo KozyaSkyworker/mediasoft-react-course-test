@@ -1,12 +1,15 @@
-import classes from './App.module.scss';
+import './App.scss';
+import Footer from './components/footer/Footer';
 import Header from './components/header/Header';
 
 function App() {
   return (
-    <div className={classes.wrapper}>
+    <div className="wrapper">
       <Header />
-      <main className={classes.main}>2</main>
-      <footer className="footer">3</footer>
+      <div className="container">
+        <main className="main">2</main>
+      </div>
+      <Footer />
     </div>
   );
 }

@@ -1,0 +1,28 @@
+.footer{
+    background-color: rgb(216, 216, 220);
+    padding: 1.5rem 0 1rem 0;
+    border-top: 1px solid rgba($color: #000, $alpha: .1);
+
+    &__top{
+        display: flex;
+        align-items: center;
+    }
+    &__top &__list{
+        display: flex;
+        align-items: center;
+    }
+
+    &__logo{
+        margin-right: 2rem;
+    }
+    &__top &__item + &__item{
+        margin-left: 1rem;
+    }
+
+    &__bot{
+        margin-top: 2rem;
+    }
+    &__bot &__item + &__item{
+        margin-top: 1rem;
+    }
+}

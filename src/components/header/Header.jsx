@@ -14,7 +14,7 @@ const Header = () => {
           </a>
           <ul className={classes.header__list}>
             <li className={classes.header__item}>
-              <input type="text" placeholder="Поиск" />
+              {/* <input type="text" placeholder="Поиск" /> */}
               <IoMdSearch />
             </li>
             <li className={classes.header__item}>
