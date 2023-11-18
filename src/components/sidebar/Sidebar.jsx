@@ -2,10 +2,15 @@ import classes from './sidebar.module.scss';
 
 import axios from 'axios';
 import { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { setCurrentCategoryAction } from '../../redux/reducers/filtersReducer';
 
 const Sidebar = () => {
   const [tabs, setTabs] = useState(['All']);
   const [isLoading, setIsLoading] = useState(true);
+
+  const dispatch = useDispatch();
+  const currentCategory = useSelector((state) => state.category.currentCategory);
 
   useEffect(() => {
     axios
@@ -33,7 +38,15 @@ const Sidebar = () => {
         ) : (
           tabs.map((tab) => {
             return (
-              <li className={classes.sidebar__item} key={tab}>
+              <li
+                className={`${classes.sidebar__item} ${
+                  tab === currentCategory ? classes.sidebar__item_active : ''
+                }`}
+                key={tab}
+                onClick={() => {
+                  // let tempCategory = tab === 'All' ? '' : tab;
+                  dispatch(setCurrentCategoryAction(tab));
+                }}>
                 {tab}
               </li>
             );

@@ -23,4 +23,9 @@
     &__item + &__item{
         margin-top: .5rem;
     }
+
+    &__item_active{
+        background-color: #0BCF6B;
+        color: #fff;
+    }
 }
