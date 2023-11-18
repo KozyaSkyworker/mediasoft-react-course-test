@@ -5,9 +5,12 @@
     min-height: 100vh;
 }
 
-
-.wrapper .container{
+.main{
     flex: 1 0 auto;
+
+    &__inner{
+        margin: 1.5rem 0;
+    }
 }
 
 footer{
