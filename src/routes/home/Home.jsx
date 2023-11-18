@@ -1,9 +1,11 @@
-import './aside.scss';
+import classes from './home.module.scss';
 
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 
 import Product from '../../components/product/Product';
+import Sidebar from '../../components/sidebar/Sidebar';
+import Sort from '../../components/sort/Sort';
 
 const Home = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -18,11 +20,12 @@ const Home = () => {
 
   return (
     <>
-      <h1>Home</h1>
-      <div className="box">
-        <aside className="aside">aside</aside>
-        <section className="content">
-          <div className="content__inner">
+      <h1>Каталог товаров</h1>
+      <div className={classes.content}>
+        <Sidebar />
+        <section className={classes.products}>
+          <Sort />
+          <div className={classes.products__wrapper}>
             {isLoading ? (
               <p>Идёт Загрузка. жди</p>
             ) : (

@@ -6,8 +6,11 @@ import { MdFavorite } from 'react-icons/md';
 const Product = ({ title, price, rating, brand, category, thumbnail }) => {
   return (
     <div className={classes.product}>
-      <img className={classes.product__img} src={thumbnail} width={100} alt="" />
-      <p className={classes.product__title}>{title}</p>
+      <a className={classes.product__link} href="#">
+        <img className={classes.product__img} src={thumbnail} width={100} alt="" />
+
+        <p className={classes.product__title}>{title}</p>
+      </a>
       <div className={classes.product__bot}>
         <p>
           <span>{price}</span> $
