@@ -1,0 +1,26 @@
+.header{
+    background-color: #fff;
+    padding: 1rem 0 1.5rem 0;
+    border-bottom: 1px solid rgba($color: #000, $alpha: .1);
+
+    &__top, &__bot, &__list {
+        display: flex;
+        align-items: center;
+    }
+
+    &__logo{
+        margin-right: 5rem;
+    }
+
+    &__bot{
+        justify-content: space-between;
+    }
+
+    &__bot{
+        margin-top: .5rem;
+    }
+
+    &__item + &__item{
+        margin-left: 1rem;
+    }
+}
