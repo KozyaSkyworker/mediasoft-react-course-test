@@ -8,7 +8,7 @@ const Product = ({ id, title, price, thumbnail }) => {
   return (
     <div className={classes.product}>
       <Link to={`/shop/products/${id}`} className={classes.product__link}>
-        <img className={classes.product__img} src={thumbnail} width={100} alt="" />
+        <img className={classes.product__img} src={thumbnail} width={100} alt={title} />
 
         <p className={classes.product__title}>{title}</p>
       </Link>

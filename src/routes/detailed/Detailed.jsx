@@ -31,7 +31,7 @@ const Detailed = () => {
             <p>loading</p>
           ) : (
             images.map((img, index) => {
-              return <img src={img} key={index} />;
+              return <img src={img} key={index} alt="фотография" />;
             })
           )}
         </div>

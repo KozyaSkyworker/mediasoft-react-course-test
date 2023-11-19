@@ -9,7 +9,6 @@ import { useState } from 'react';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  console.log(isMenuOpen);
   return (
     <header className={classes.header}>
       <div className="container">
@@ -78,7 +77,9 @@ const Header = () => {
               </li>
             </ul>
           </nav>
-          <span className="header__phone">+7(888) 888-88-88</span>
+          <a className="header__phone" href="tel:+7(888) 888-88-88">
+            +7(888) 888-88-88
+          </a>
         </div>
       </div>
     </header>

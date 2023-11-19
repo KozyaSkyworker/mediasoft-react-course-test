@@ -1,4 +1,15 @@
 .information{
+
+    & section{
+        background-color: #fff;
+        border-radius: 10px;
+        padding: .7rem 1rem;
+    }
+
+    & section + section{
+        margin-top: 1rem;
+    }
+
     &__form{
         display: flex;
         flex-direction: column;

@@ -2,7 +2,7 @@ import classes from './information.module.scss';
 
 const Information = () => {
   return (
-    <>
+    <div className={classes.information}>
       <h1>Основные положения</h1>
       <section className="about">
         <h2>О нас</h2>
@@ -64,7 +64,7 @@ const Information = () => {
           <button className={classes.information__btn}>Отправить</button>
         </form>
       </section>
-    </>
+    </div>
   );
 };
 
