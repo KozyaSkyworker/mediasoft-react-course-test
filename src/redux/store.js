@@ -3,10 +3,12 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import thunk from 'redux-thunk';
 import { filtersReducer } from './reducers/filtersReducer';
 import { productsReducer } from './reducers/productsReducer';
+import { singleProductReducer } from './reducers/singleProductReducer';
 
 const rootReducer = combineReducers({
   filters: filtersReducer,
   data: productsReducer,
+  product: singleProductReducer,
 });
 
 export const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(thunk)));
