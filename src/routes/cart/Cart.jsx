@@ -31,12 +31,23 @@ const Cart = () => {
                 return (
                   <div className={classes.cart__item} key={itm.id}>
                     <img className={classes.cart__img} src={itm.thumbnail} alt="фотография" />
-                    <span className={classes.cart__title}>{itm.title}</span>
-                    <span className={classes.cart__ctrl}>-|+</span>
-                    <span className={classes.cart__price}>{itm.pricePerOne * itm.quantity}</span>
-                    <button className={classes.cart__delete}>
-                      <FaTrash />
-                    </button>
+                    <div className={classes.cart__text}>
+                      <span className={classes.cart__title}>{itm.title}</span>
+                      <div className={classes.cart__btns}>
+                        <span className={classes.cart__quantity}>
+                          Количество тв. {itm.quantity}
+                        </span>
+                        <div className={classes.cart__ctrl}>
+                          <button>-</button>|<button>+</button>
+                        </div>
+                      </div>
+                      <span className={classes.cart__price}>
+                        {itm.pricePerOne * itm.quantity} $
+                      </span>
+                      <button className={classes.cart__delete}>
+                        <FaTrash />
+                      </button>
+                    </div>
                   </div>
                 );
               })}

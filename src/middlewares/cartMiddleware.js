@@ -8,7 +8,13 @@ import {
 export const addProductToCart = (obj) => {
   return (dispatch, getState) => {
     console.log('BEFORE CART ADD PRODUCT: ', getState());
-    dispatch(addItemAction(obj));
+    const cartHadObject = getState().cartItems.items.find((itm) => itm.id === obj.id);
+    if (cartHadObject) {
+      cartHadObject.quantity++;
+    } else {
+      dispatch(addItemAction(obj));
+    }
+
     console.log('AFTER CART ADD PRODUCT: ', getState());
   };
 };
