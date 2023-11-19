@@ -48,28 +48,40 @@ const Header = () => {
           <button className={classes.header__burger} onClick={() => setIsMenuOpen(true)}>
             <span></span>
           </button>
-          {/* навигация на маленьком экране */}
 
+          {/* навигация на маленьком экране */}
           <div className={`${classes.menu} ${isMenuOpen ? classes.menu_open : ''}`}>
             <ul className={`${classes.header__menu} ${classes.menu__list}`}>
               <IoClose onClick={() => setIsMenuOpen(false)} />
               <li className={classes.menu__item}>
-                <Link className={classes.menu__link} to="/shop/">
+                <Link
+                  className={classes.menu__link}
+                  to="/shop/"
+                  onClick={() => setIsMenuOpen(false)}>
                   Главная <IoMdHome />
                 </Link>
               </li>
               <li className={classes.menu__item}>
-                <Link className={classes.menu__link} to="/shop/cart">
+                <Link
+                  className={classes.menu__link}
+                  to="/shop/cart"
+                  onClick={() => setIsMenuOpen(false)}>
                   Корзина <FaCartShopping />
                 </Link>
               </li>
               <li className={classes.menu__item}>
-                <Link className={classes.menu__link} to="/shop/favorites">
+                <Link
+                  className={classes.menu__link}
+                  to="/shop/favorites"
+                  onClick={() => setIsMenuOpen(false)}>
                   Отложенные <MdFavorite />
                 </Link>
               </li>
               <li className={classes.menu__item}>
-                <Link className={classes.menu__link} to="/shop/info">
+                <Link
+                  className={classes.menu__link}
+                  to="/shop/info"
+                  onClick={() => setIsMenuOpen(false)}>
                   Основная информация
                 </Link>
               </li>

@@ -1,6 +1,6 @@
 import classes from './sort.module.scss';
 
-import { useRef, useState, useEffect } from 'react';
+import { memo, useEffect, useState } from 'react';
 
 import { TbArrowsSort } from 'react-icons/tb';
 import { useDispatch, useSelector } from 'react-redux';
@@ -29,9 +29,7 @@ const sortItems = [
   },
 ];
 
-const Sort = () => {
-  const sortBlock = useRef(null);
-
+const Sort = memo(function Sort() {
   const [isPopupOpen, setIsPopupOpen] = useState(false);
 
   const dispatch = useDispatch();
@@ -39,7 +37,12 @@ const Sort = () => {
 
   // useEffect(() => {
   //   const handleClick = (event) => {
-  //     console.log(event);
+  //     console.log(event.target);
+  //     console.log(sortRef.current);
+  //     console.log(isPopupOpen);
+  //     if (isPopupOpen && event.target != sortRef.current) {
+  //       setIsPopupOpen(false);
+  //     }
   //   };
 
   //   document.body.addEventListener('click', handleClick);
@@ -48,7 +51,7 @@ const Sort = () => {
   // }, []);
 
   return (
-    <div className={classes.sort} ref={sortBlock}>
+    <div className={classes.sort}>
       <div
         className={classes.sort__clickable}
         onClick={() => {
@@ -80,6 +83,6 @@ const Sort = () => {
       )}
     </div>
   );
-};
+});
 
 export default Sort;

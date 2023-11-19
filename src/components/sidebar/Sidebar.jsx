@@ -1,12 +1,12 @@
 import classes from './sidebar.module.scss';
 
 import axios from 'axios';
-import { useEffect, useState } from 'react';
+import { memo, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { setCurrentCategoryAction } from '../../redux/reducers/filtersReducer';
 import CategoriesSkeleton from '../skeletons/CategoriesSkeleton';
 
-const Sidebar = () => {
+const Sidebar = memo(function Sidebar() {
   // логику тоже можно в redux
   const [tabs, setTabs] = useState(['All']);
   const [isLoading, setIsLoading] = useState(true);
@@ -58,6 +58,6 @@ const Sidebar = () => {
       </ul>
     </div>
   );
-};
+});
 
 export default Sidebar;

@@ -1,14 +1,17 @@
 // --- СТРАНИЦА ТОВАРА --- //
 import classes from './detailed.module.scss';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchSingleProduct } from '../../services/fetchProducts';
 import { setIsLoadingSingleProductAction } from '../../redux/reducers/singleProductReducer';
 
 import { FaStar } from 'react-icons/fa';
+import { addProductToCart } from '../../middlewares/cartMiddleware';
 
 const Detailed = () => {
+  const [count, setCount] = useState(1);
+
   const dispatch = useDispatch();
 
   const { productId } = useParams();
@@ -53,6 +56,21 @@ const Detailed = () => {
             <p>
               <span className={classes.product__price}>{price}</span> $
             </p>{' '}
+            <p>
+              Сколько штук добавить в корзину?{' '}
+              <input
+                className={classes.product__count}
+                type="number"
+                value={count}
+                onChange={(e) => setCount(e.target.value)}
+              />
+            </p>
+            <button
+              onClick={() => {
+                addProductToCart();
+              }}>
+              Добавить в корзину
+            </button>
           </>
         )}
       </div>

@@ -29,7 +29,9 @@
     &__price{
         font-size: 1.5rem;
     }
-    
+    &__count{
+        width: 70px;
+    }
 }
 
 @media (max-width: 1036px) {

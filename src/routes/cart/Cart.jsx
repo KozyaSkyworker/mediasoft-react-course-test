@@ -11,6 +11,7 @@ import {
 } from '../../middlewares/cartMiddleware';
 
 const Cart = () => {
+  console.log('CART rerender');
   const dispatch = useDispatch();
 
   const items = useSelector((state) => state.cartItems.items);
