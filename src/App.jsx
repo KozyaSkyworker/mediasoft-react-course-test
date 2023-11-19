@@ -4,6 +4,7 @@ import Header from './components/header/Header';
 
 import { Routes, Route } from 'react-router-dom';
 import { Suspense, lazy } from 'react';
+import Information from './routes/information/Information';
 
 const Home = lazy(() => import('./routes/home/Home'));
 const Detailed = lazy(() => import('./routes/detailed/Detailed'));
@@ -29,6 +30,13 @@ function App() {
                 element={
                   <Suspense fallback={<p>Загрузка...</p>}>
                     <Detailed />
+                  </Suspense>
+                }></Route>
+              <Route
+                path="shop/info"
+                element={
+                  <Suspense fallback={<p>Загрузка...</p>}>
+                    <Information />
                   </Suspense>
                 }></Route>
               <Route

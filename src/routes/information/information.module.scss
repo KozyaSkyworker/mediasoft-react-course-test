@@ -1,0 +1,13 @@
+.information{
+    &__form{
+        display: flex;
+        flex-direction: column;
+    }
+    &__inpt{
+        width: 50%;
+        margin: .8rem 0;
+    }
+    &__btn{
+        width: max-content;
+    }
+}

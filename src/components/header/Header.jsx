@@ -10,7 +10,7 @@ const Header = () => {
     <header className={classes.header}>
       <div className="container">
         <div className={classes.header__top}>
-          <Link className={classes.header__logo} to="/shop">
+          <Link className={classes.header__logo} to="/shop/">
             <img src={logo} alt="logo" height={20} />
           </Link>
           <ul className={classes.header__list}>
@@ -37,23 +37,8 @@ const Header = () => {
           <nav className={classes.header__navigation}>
             <ul className={classes.header__list}>
               <li className={classes.header__item}>
-                <Link className={classes.header__link} to="/about">
-                  О нас
-                </Link>
-              </li>
-              <li className={classes.header__item}>
-                <Link className={classes.header__link} to="/paymontinfo">
-                  Оплата
-                </Link>
-              </li>
-              <li className={classes.header__item}>
-                <Link className={classes.header__link} to="/delivery">
-                  Доставка
-                </Link>
-              </li>
-              <li className={classes.header__item}>
-                <Link className={classes.header__link} to="/contacts">
-                  Контакты
+                <Link className={classes.header__link} to="/shop/info">
+                  Основная информация
                 </Link>
               </li>
             </ul>
