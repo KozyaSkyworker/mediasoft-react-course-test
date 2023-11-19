@@ -4,11 +4,13 @@ import thunk from 'redux-thunk';
 import { filtersReducer } from './reducers/filtersReducer';
 import { productsReducer } from './reducers/productsReducer';
 import { singleProductReducer } from './reducers/singleProductReducer';
+import { cartReducer } from './reducers/cartReducer';
 
 const rootReducer = combineReducers({
   filters: filtersReducer,
   data: productsReducer,
   product: singleProductReducer,
+  cartItems: cartReducer,
 });
 
 export const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(thunk)));

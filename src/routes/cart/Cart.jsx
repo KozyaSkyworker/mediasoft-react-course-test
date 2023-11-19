@@ -1,10 +1,20 @@
 import classes from './cart.module.scss';
 
+import { useSelector } from 'react-redux';
+
 import { FaTrash } from 'react-icons/fa';
 
 const Cart = () => {
   // получить айтемы корзины
+  const items = useSelector((state) => state.cartItems.items);
 
+  // два прохода по массиву. зачем?
+  const totalQuantity = items.reduce((sum, current) => {
+    return sum + current.quantity;
+  }, 0);
+  const totalPrice = items.reduce((sum, current) => {
+    return sum + current.pricePerOne * current.quantity;
+  }, 0);
   // эктионы: удаление всех, одного, изменения кол-ва
 
   return (
@@ -14,22 +24,32 @@ const Cart = () => {
         <button className={classes.cart__clear}>Очистить корзину</button>
       </div>
       <div className={classes.cart__wrapper}>
-        <div className={classes.cart__items}>
-          <div className={classes.cart__item}>
-            <img className={classes.cart__img} src="" alt="фотография" />
-            <span className={classes.cart__title}>title</span>
-            <span className={classes.cart__ctrl}>-|+</span>
-            <span className={classes.cart__price}>price</span>
-            <button className={classes.cart__delete}>
-              <FaTrash />
-            </button>
-          </div>
-        </div>
-        <div className={classes.cart__amount}>
-          <p>
-            В корзине <span>10</span> тв. на сумму <span>1000</span> $
-          </p>
-        </div>
+        {items.length > 0 ? (
+          <>
+            <div className={classes.cart__items}>
+              {items.map((itm) => {
+                return (
+                  <div className={classes.cart__item} key={itm.id}>
+                    <img className={classes.cart__img} src={itm.thumbnail} alt="фотография" />
+                    <span className={classes.cart__title}>{itm.title}</span>
+                    <span className={classes.cart__ctrl}>-|+</span>
+                    <span className={classes.cart__price}>{itm.pricePerOne * itm.quantity}</span>
+                    <button className={classes.cart__delete}>
+                      <FaTrash />
+                    </button>
+                  </div>
+                );
+              })}
+            </div>
+            <div className={classes.cart__amount}>
+              <p>
+                В корзине <span>{totalQuantity}</span> тв. на сумму <span>{totalPrice}</span> $
+              </p>
+            </div>
+          </>
+        ) : (
+          <p className={classes.cart__empty}>Ваша корзина пуста</p>
+        )}
       </div>
       <div className={classes.cart__bot}>
         <button>Заказать</button>

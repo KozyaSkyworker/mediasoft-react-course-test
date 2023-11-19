@@ -5,11 +5,19 @@
         background: red;
     }
 
+    &__top{
+        margin-top: 1rem;
+    }
+
     &__wrapper{
         background-color: #fff;
         border-radius: 10px;
         padding: .8rem 1rem;
         margin: 1rem 0;
+    }
+
+    &__empty{
+        font-size: 2rem;
     }
 
     &__items{

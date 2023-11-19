@@ -2,9 +2,14 @@ import classes from './product.module.scss';
 
 import { FaCartShopping } from 'react-icons/fa6';
 import { MdFavorite } from 'react-icons/md';
+import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { addItemAction } from '../../redux/reducers/cartReducer';
+import { addProductToCart } from '../../middlewares/cartMiddleware';
 
 const Product = ({ id, title, price, thumbnail }) => {
+  const dispatch = useDispatch();
+
   return (
     <div className={classes.product}>
       <Link to={`/shop/products/${id}`} className={classes.product__link}>
@@ -16,7 +21,10 @@ const Product = ({ id, title, price, thumbnail }) => {
         <p>
           <span>{price}</span> $
         </p>
-        <button>
+        <button
+          onClick={() => {
+            dispatch(addProductToCart({ id, title, thumbnail, pricePerOne: price, quantity: 1 }));
+          }}>
           {' '}
           <FaCartShopping />
         </button>
