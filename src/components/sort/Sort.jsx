@@ -35,20 +35,7 @@ const Sort = memo(function Sort() {
   const dispatch = useDispatch();
   const currentSort = useSelector((state) => state.filters.currentSort);
 
-  // useEffect(() => {
-  //   const handleClick = (event) => {
-  //     console.log(event.target);
-  //     console.log(sortRef.current);
-  //     console.log(isPopupOpen);
-  //     if (isPopupOpen && event.target != sortRef.current) {
-  //       setIsPopupOpen(false);
-  //     }
-  //   };
-
-  //   document.body.addEventListener('click', handleClick);
-
-  //   return () => document.body.removeEventListener('click', handleClick);
-  // }, []);
+  // закртыие на клик outside ???
 
   return (
     <div className={classes.sort}>

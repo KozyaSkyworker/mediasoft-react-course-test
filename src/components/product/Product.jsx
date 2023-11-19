@@ -1,5 +1,6 @@
 import classes from './product.module.scss';
 
+import { useInView } from 'react-intersection-observer';
 import { FaCartShopping } from 'react-icons/fa6';
 import { MdFavorite } from 'react-icons/md';
 import { useDispatch } from 'react-redux';
@@ -9,10 +10,19 @@ import { addProductToCart } from '../../middlewares/cartMiddleware';
 const Product = ({ id, title, price, thumbnail }) => {
   const dispatch = useDispatch();
 
+  const { ref, inView } = useInView({
+    threshold: 0.5,
+    triggerOnce: true,
+  });
+
   return (
-    <div className={classes.product}>
+    <div className={classes.product} ref={ref}>
       <Link to={`/shop/products/${id}`} className={classes.product__link}>
-        <img className={classes.product__img} src={thumbnail} width={100} alt={title} />
+        {inView ? (
+          <img className={classes.product__img} src={thumbnail} width={100} alt={title} />
+        ) : (
+          <div className={classes.product__img_skeleton}></div>
+        )}
 
         <p className={classes.product__title}>{title}</p>
       </Link>

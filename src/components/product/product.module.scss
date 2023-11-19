@@ -28,6 +28,13 @@
         height: 75%;
     }
 
+    &__img_skeleton{
+        background-color: #ccc;
+        border-radius: 5px;
+        width: 150px;
+        height: 75%;
+    }
+
     &__title{
         font-size: 1.1rem;
         margin: .5rem;

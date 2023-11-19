@@ -5,6 +5,7 @@ import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchSingleProduct } from '../../services/fetchProducts';
 import { setIsLoadingSingleProductAction } from '../../redux/reducers/singleProductReducer';
+import ProductsSkeleton from '../../components/skeletons/productsSkeleton';
 
 import { FaStar } from 'react-icons/fa';
 import { addProductToCart } from '../../middlewares/cartMiddleware';
@@ -31,13 +32,13 @@ const Detailed = () => {
     <div className={classes.product}>
       <div className={classes.product__images}>
         <div className={classes.product__wrapper}>
-          {isLoading ? (
-            <p>loading</p>
-          ) : (
-            images.map((img, index) => {
-              return <img src={img} key={index} alt="фотография" />;
-            })
-          )}
+          {isLoading
+            ? [...new Array(3)].map((_, index) => {
+                return <ProductsSkeleton key={index} />;
+              })
+            : images.map((img, index) => {
+                return <img src={img} key={index} alt="фотография" />;
+              })}
         </div>
       </div>
       <div className={classes.product__text}>

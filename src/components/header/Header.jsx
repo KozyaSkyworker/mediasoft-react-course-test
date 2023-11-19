@@ -2,7 +2,7 @@ import classes from './header.module.scss';
 import logo from './../../assets/logo.png';
 import { FaCartShopping } from 'react-icons/fa6';
 import { MdFavorite } from 'react-icons/md';
-import { IoMdSearch, IoMdHome } from 'react-icons/io';
+import { IoMdHome } from 'react-icons/io';
 import { IoClose } from 'react-icons/io5';
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
@@ -24,10 +24,6 @@ const Header = () => {
             <img src={logo} alt="logo" height={20} />
           </Link>
           <ul className={classes.header__list}>
-            <li className={classes.header__item}>
-              {/* <input type="text" placeholder="Поиск" /> */}
-              <IoMdSearch />
-            </li>
             <li className={classes.header__item}>
               <Link to="/shop/favorites">
                 Отложенные

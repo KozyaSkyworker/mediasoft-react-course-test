@@ -1,6 +1,33 @@
+import { useEffect } from 'react';
 import classes from './information.module.scss';
+import { useCookies } from 'react-cookie';
+import { useState } from 'react';
 
 const Information = () => {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    phone: '',
+    message: '',
+  });
+  const [cookies, setCookies] = useCookies(['form']);
+
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
+    setCookies('form', formData, { path: '/shop/info' });
+  };
+
+  useEffect(() => {
+    if (cookies.form == undefined) {
+      setCookies('form', formData, { path: '/shop/info' });
+    } else {
+      setFormData(cookies.form);
+    }
+  }, []);
+
   return (
     <div className={classes.information}>
       <h1>Основные положения</h1>
@@ -32,33 +59,57 @@ const Information = () => {
       </section>
       <section className="feedback">
         <h2>Обратная связь</h2>
-        <form className={classes.information__form} action="">
+        <form className={classes.information__form}>
           <label>
-            Введите своё имя
+            Введите Ваше
             <br />
             <input
               className={classes.information__inpt}
               type="text"
               placeholder="Как к Вам обращаться?"
+              name="name"
+              value={formData.name}
+              onChange={handleChange}
+              required
             />
           </label>
           <label>
-            Введите свой адресс электронной почты
+            Введите Ваш адресс электронной почты
             <br />
             <input
               className={classes.information__inpt}
               type="email"
               placeholder="example@gmail.com"
+              name="email"
+              value={formData.email}
+              onChange={handleChange}
+              required
             />
           </label>
           <label>
-            Введите свой номер телефона
+            Введите Ваш номер телефона
             <br />
             <input
               className={classes.information__inpt}
               type="tel"
               placeholder="8 (999) 999-99-99"
+              name="phone"
+              value={formData.phone}
+              onChange={handleChange}
+              required
             />
+          </label>
+          <label>
+            Введите Ваше сообщение
+            <br />
+            <textarea
+              className={classes.information__textarea}
+              id=""
+              cols="30"
+              name="message"
+              value={formData.message}
+              onChange={handleChange}
+              required></textarea>
           </label>
 
           <button className={classes.information__btn}>Отправить</button>
