@@ -1,29 +1,29 @@
 import classes from './home.module.scss';
 
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-// import axios from 'axios';
 
 import { fetchProducts } from '../../services/fetchProducts';
 
 import Product from '../../components/product/Product';
 import Sidebar from '../../components/sidebar/Sidebar';
 import Sort from '../../components/sort/Sort';
+import ProductsSkeleton from '../../components/skeletons/productsSkeleton';
+import { setIsLoading } from '../../redux/reducers/productsReducer';
 
 const Home = () => {
-  const [isLoading, setIsLoading] = useState(true);
-
   const dispatch = useDispatch();
+
   const currentCategory = useSelector((state) => state.filters.currentCategory);
   const products = useSelector((state) => state.data.products);
+  const isLoading = useSelector((state) => state.data.isLoading);
 
   useEffect(() => {
-    setIsLoading(true);
+    dispatch(setIsLoading(true));
     // в API для получения всех пустое значение передать нужно
     const category = currentCategory === 'All' ? '' : currentCategory;
     // limit=9&page=1&
     dispatch(fetchProducts(category));
-    setIsLoading(false);
   }, [currentCategory]);
 
   return (
@@ -34,13 +34,13 @@ const Home = () => {
         <section className={classes.products}>
           <Sort />
           <div className={classes.products__wrapper}>
-            {isLoading ? (
-              <p>Подождите, пожалуйста, идёт загрузка...</p>
-            ) : (
-              products.map((prod) => {
-                return <Product key={prod.id} {...prod} />;
-              })
-            )}
+            {isLoading
+              ? [...new Array(3)].map((_, index) => {
+                  return <ProductsSkeleton key={index} />;
+                })
+              : products.map((prod) => {
+                  return <Product key={prod.id} {...prod} />;
+                })}
           </div>
         </section>
       </div>
