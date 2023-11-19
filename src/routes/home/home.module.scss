@@ -6,12 +6,25 @@
 .products{
     margin-left: 2rem;
     flex-grow: 1;
+
+    &__wrapper{
+        border-radius: 10px;
+        padding: 10px;
+        display: flex;
+        flex-wrap: wrap;
+        margin: -10px -10px;
+        background-color: #fff;
+    }
 }
-.products__wrapper{
-    border-radius: 10px;
-    padding: 10px;
-    display: flex;
-    flex-wrap: wrap;
-    margin: -10px -10px;
-    background-color: #fff;
+
+@media (max-width: 948px) {
+    .content{
+        display: block;
+    }
+    .products{
+        margin-left: 0;
+    }
+    .products__wrapper{
+        margin: 0;
+    }
 }
