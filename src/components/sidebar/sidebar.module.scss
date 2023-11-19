@@ -16,7 +16,7 @@
         border-radius: 5px;
         cursor: pointer;
     }
-    &__item:hover{
+    &__item:hover, &__item_active{
         background-color: #0BCF6B;
         color: #fff;
     }
@@ -24,8 +24,4 @@
         margin-top: .5rem;
     }
 
-    &__item_active{
-        background-color: #0BCF6B;
-        color: #fff;
-    }
 }

@@ -3,32 +3,33 @@ import logo from './../../assets/logo.png';
 import { FaCartShopping } from 'react-icons/fa6';
 import { MdFavorite } from 'react-icons/md';
 import { IoMdSearch } from 'react-icons/io';
+import { Link } from 'react-router-dom';
 
 const Header = () => {
   return (
     <header className={classes.header}>
       <div className="container">
         <div className={classes.header__top}>
-          <a className={classes.header__logo} href="/">
+          <Link className={classes.header__logo} to="/shop">
             <img src={logo} alt="logo" height={20} />
-          </a>
+          </Link>
           <ul className={classes.header__list}>
             <li className={classes.header__item}>
               {/* <input type="text" placeholder="Поиск" /> */}
               <IoMdSearch />
             </li>
             <li className={classes.header__item}>
-              <a href="/favorites">
+              <Link to="/favorites">
                 Отложенные
                 <MdFavorite />
-              </a>
+              </Link>
             </li>
 
             <li className={classes.header__item}>
-              <a href="/cart">
+              <Link to="/cart">
                 Корзина
                 <FaCartShopping />
-              </a>
+              </Link>
             </li>
           </ul>
         </div>
@@ -36,24 +37,24 @@ const Header = () => {
           <nav className={classes.header__navigation}>
             <ul className={classes.header__list}>
               <li className={classes.header__item}>
-                <a className={classes.header__link} href="/about">
+                <Link className={classes.header__link} to="/about">
                   О нас
-                </a>
+                </Link>
               </li>
               <li className={classes.header__item}>
-                <a className={classes.header__link} href="/paymontinfo">
+                <Link className={classes.header__link} to="/paymontinfo">
                   Оплата
-                </a>
+                </Link>
               </li>
               <li className={classes.header__item}>
-                <a className={classes.header__link} href="/delivery">
+                <Link className={classes.header__link} to="/delivery">
                   Доставка
-                </a>
+                </Link>
               </li>
               <li className={classes.header__item}>
-                <a className={classes.header__link} href="/contacts">
+                <Link className={classes.header__link} to="/contacts">
                   Контакты
-                </a>
+                </Link>
               </li>
             </ul>
           </nav>

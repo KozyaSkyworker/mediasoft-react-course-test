@@ -15,6 +15,7 @@ const Home = () => {
   const dispatch = useDispatch();
 
   const currentCategory = useSelector((state) => state.filters.currentCategory);
+  const currentSort = useSelector((state) => state.filters.currentSort);
   const products = useSelector((state) => state.data.products);
   const isLoading = useSelector((state) => state.data.isLoading);
 
@@ -23,8 +24,8 @@ const Home = () => {
     // в API для получения всех пустое значение передать нужно
     const category = currentCategory === 'All' ? '' : currentCategory;
     // limit=9&page=1&
-    dispatch(fetchProducts(category));
-  }, [currentCategory]);
+    dispatch(fetchProducts(category, currentSort));
+  }, [currentCategory, currentSort]);
 
   return (
     <>

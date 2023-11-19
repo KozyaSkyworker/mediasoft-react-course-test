@@ -5,17 +5,41 @@
     border-radius: 10px;
     margin: 0 -10px 2rem -10px;
     padding: 10px 20px;
-    
+    position: relative;
+    &__clickable{
+        cursor: pointer;
+
+    }
+    &__selected{
+        margin-left: 1rem;
+    }
+
     &__list{
-        margin-left: .5rem;
+        border-radius: 10px;
+        border: 1px solid rgba($color: #000000, $alpha: .1);
+        padding: 1rem;
+        position: absolute;
+        background: #fff;
+        top: 100%;
+        left: 38px;
+        z-index: 11;
     }
 
     &__item{
+        padding: .2rem .5rem;
         font-weight: 500;
-        
+        cursor: pointer;
     }
-    
-    &__item_active span{
+
+    &__item + &__item {
+        margin-top: .7rem;
+    }
+    &__item:hover, &__item_active{
+        background: #0BCF6B;
+        color: #fff;
+    }
+
+    &__selected_active{
         border-bottom: 3px dashed #0BCF6B;
     }
 }
