@@ -2,7 +2,9 @@ import {
   addItemAction,
   addItemsAction,
   clearItemsAction,
+  decrementItemQuantityAction,
   deleteItemAction,
+  incrementItemQuantityAction,
 } from '../redux/reducers/cartReducer';
 
 export const addProductToCart = (obj) => {
@@ -10,7 +12,7 @@ export const addProductToCart = (obj) => {
     console.log('BEFORE CART ADD PRODUCT: ', getState());
     const cartHadObject = getState().cartItems.items.find((itm) => itm.id === obj.id);
     if (cartHadObject) {
-      cartHadObject.quantity++;
+      dispatch(incrementItemQuantityAction(cartHadObject.id));
     } else {
       dispatch(addItemAction(obj));
     }
@@ -30,15 +32,30 @@ export const addProductsToCart = (productsList) => {
 export const deleteProductFromCart = (obj) => {
   return (dispatch, getState) => {
     console.log('BEFORE CART DELETE PRODUCT: ', getState());
-    dispatch(deleteItemAction(obj));
+    dispatch(deleteItemAction(obj.id));
     console.log('AFTER CART DELETE PRODUCT: ', getState());
   };
 };
 
-export const clearCartCart = () => {
+export const clearCart = (emptyArray) => {
   return (dispatch, getState) => {
     console.log('BEFORE CART CLEAR: ', getState());
-    dispatch(clearItemsAction());
+    dispatch(clearItemsAction(emptyArray));
     console.log('AFTER CART CLEAR: ', getState());
+  };
+};
+
+export const incrementProductQuantity = (obj) => {
+  return (dispatch, getState) => {
+    console.log('BEFORE CART INCREMENT PRODUCT QUANTITY: ', getState());
+    dispatch(incrementItemQuantityAction(obj.id));
+    console.log('AFTER CART DECREMENT PRODUCT QUANTITY: ', getState());
+  };
+};
+export const decrementProductQuantity = (obj) => {
+  return (dispatch, getState) => {
+    console.log('BEFORE CART INCREMENT PRODUCT QUANTITY: ', getState());
+    dispatch(decrementItemQuantityAction(obj.id));
+    console.log('AFTER CART DECREMENT PRODUCT QUANTITY: ', getState());
   };
 };

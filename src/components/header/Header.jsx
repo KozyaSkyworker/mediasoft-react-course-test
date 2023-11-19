@@ -6,9 +6,16 @@ import { IoMdSearch, IoMdHome } from 'react-icons/io';
 import { IoClose } from 'react-icons/io5';
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
+import { useSelector } from 'react-redux';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const cartProducts = useSelector((state) => state.cartItems.items);
+  const productsQuantity = cartProducts.reduce((count, current) => {
+    return count + current.quantity;
+  }, 0);
+
   return (
     <header className={classes.header}>
       <div className="container">
@@ -25,6 +32,7 @@ const Header = () => {
               <Link to="/shop/favorites">
                 Отложенные
                 <MdFavorite />
+                <span> (???)</span>
               </Link>
             </li>
 
@@ -32,6 +40,7 @@ const Header = () => {
               <Link to="/shop/cart">
                 Корзина
                 <FaCartShopping />
+                <span> ({productsQuantity})</span>
               </Link>
             </li>
           </ul>

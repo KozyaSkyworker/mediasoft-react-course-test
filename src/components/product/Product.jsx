@@ -4,7 +4,6 @@ import { FaCartShopping } from 'react-icons/fa6';
 import { MdFavorite } from 'react-icons/md';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { addItemAction } from '../../redux/reducers/cartReducer';
 import { addProductToCart } from '../../middlewares/cartMiddleware';
 
 const Product = ({ id, title, price, thumbnail }) => {

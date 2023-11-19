@@ -56,8 +56,13 @@
     &__btns{
         text-align: center;
     }
+
     &__ctrl button{
         padding: .6rem 1rem;
+    }
+
+    &__ctrl button[disabled]{
+        pointer-events: none;
     }
 
 }

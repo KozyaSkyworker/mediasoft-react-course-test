@@ -20,6 +20,7 @@ const Detailed = () => {
 
   useEffect(() => {
     dispatch(setIsLoadingSingleProductAction(true));
+    // можно без нового запроса, а просто фильтровать имеющиеся
     dispatch(fetchSingleProduct(productId));
   }, []);
 

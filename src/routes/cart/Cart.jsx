@@ -1,11 +1,18 @@
 import classes from './cart.module.scss';
 
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { FaTrash } from 'react-icons/fa';
+import {
+  clearCart,
+  decrementProductQuantity,
+  deleteProductFromCart,
+  incrementProductQuantity,
+} from '../../middlewares/cartMiddleware';
 
 const Cart = () => {
-  // получить айтемы корзины
+  const dispatch = useDispatch();
+
   const items = useSelector((state) => state.cartItems.items);
 
   // два прохода по массиву. зачем?
@@ -15,13 +22,18 @@ const Cart = () => {
   const totalPrice = items.reduce((sum, current) => {
     return sum + current.pricePerOne * current.quantity;
   }, 0);
-  // эктионы: удаление всех, одного, изменения кол-ва
 
   return (
     <div className={classes.cart}>
       <h1 className={classes.cart__title}>Корзина</h1>
       <div className={classes.cart__top}>
-        <button className={classes.cart__clear}>Очистить корзину</button>
+        <button
+          className={classes.cart__clear}
+          onClick={() => {
+            dispatch(clearCart([]));
+          }}>
+          Очистить корзину
+        </button>
       </div>
       <div className={classes.cart__wrapper}>
         {items.length > 0 ? (
@@ -38,13 +50,30 @@ const Cart = () => {
                           Количество тв. {itm.quantity}
                         </span>
                         <div className={classes.cart__ctrl}>
-                          <button>-</button>|<button>+</button>
+                          <button
+                            disabled={itm.quantity === 1 ? true : false}
+                            onClick={() => {
+                              dispatch(decrementProductQuantity(itm));
+                            }}>
+                            -
+                          </button>
+                          |
+                          <button
+                            onClick={() => {
+                              dispatch(incrementProductQuantity(itm));
+                            }}>
+                            +
+                          </button>
                         </div>
                       </div>
                       <span className={classes.cart__price}>
                         {itm.pricePerOne * itm.quantity} $
                       </span>
-                      <button className={classes.cart__delete}>
+                      <button
+                        className={classes.cart__delete}
+                        onClick={() => {
+                          dispatch(deleteProductFromCart(itm));
+                        }}>
                         <FaTrash />
                       </button>
                     </div>
