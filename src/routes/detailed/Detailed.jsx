@@ -1,14 +1,14 @@
 // --- СТРАНИЦА ТОВАРА --- //
 import classes from './detailed.module.scss';
+
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchSingleProduct } from '../../services/fetchProducts';
 import { setIsLoadingSingleProductAction } from '../../redux/reducers/singleProductReducer';
 import ProductsSkeleton from '../../components/skeletons/productsSkeleton';
-
-import { FaStar } from 'react-icons/fa';
 import { addProductToCart } from '../../middlewares/cartMiddleware';
+import { FaStar } from 'react-icons/fa';
 
 const Detailed = () => {
   const [count, setCount] = useState(1);
@@ -17,7 +17,7 @@ const Detailed = () => {
 
   const { productId } = useParams();
 
-  const { title, description, price, rating, brand, images } = useSelector(
+  const { id, title, description, price, rating, brand, thumbnail, images } = useSelector(
     (state) => state.product.product,
   );
   const isLoading = useSelector((state) => state.product.isLoading);
@@ -68,7 +68,14 @@ const Detailed = () => {
             </p>
             <button
               onClick={() => {
-                addProductToCart();
+                const newCartItem = {
+                  id,
+                  title,
+                  thumbnail,
+                  pricePerOne: price,
+                  quantity: Number(count),
+                };
+                dispatch(addProductToCart(newCartItem));
               }}>
               Добавить в корзину
             </button>

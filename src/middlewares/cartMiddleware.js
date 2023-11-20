@@ -12,7 +12,7 @@ export const addProductToCart = (obj) => {
     console.log('BEFORE CART ADD PRODUCT: ', getState());
     const cartHadObject = getState().cartItems.items.find((itm) => itm.id === obj.id);
     if (cartHadObject) {
-      dispatch(incrementItemQuantityAction(cartHadObject.id));
+      dispatch(incrementItemQuantityAction({ id: cartHadObject.id, count: obj.quantity }));
     } else {
       dispatch(addItemAction(obj));
     }
@@ -48,7 +48,7 @@ export const clearCart = (emptyArray) => {
 export const incrementProductQuantity = (obj) => {
   return (dispatch, getState) => {
     console.log('BEFORE CART INCREMENT PRODUCT QUANTITY: ', getState());
-    dispatch(incrementItemQuantityAction(obj.id));
+    dispatch(incrementItemQuantityAction({ id: obj.id, count: 1 }));
     console.log('AFTER CART DECREMENT PRODUCT QUANTITY: ', getState());
   };
 };
