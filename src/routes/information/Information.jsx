@@ -10,6 +10,8 @@ const Information = () => {
     phone: '',
     message: '',
   });
+
+  // куки неправильно работают :(
   const [cookies, setCookies] = useCookies(['form']);
 
   const handleChange = (e) => {

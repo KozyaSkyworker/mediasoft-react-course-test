@@ -1,6 +1,6 @@
 import classes from './sort.module.scss';
 
-import { memo, useEffect, useState } from 'react';
+import { memo, useEffect, useState, useRef } from 'react';
 
 import { TbArrowsSort } from 'react-icons/tb';
 import { useDispatch, useSelector } from 'react-redux';
@@ -30,20 +30,33 @@ const sortItems = [
 ];
 
 const Sort = memo(function Sort() {
+  const sortRef = useRef(0);
+  console.log(sortRef);
   const [isPopupOpen, setIsPopupOpen] = useState(false);
 
   const dispatch = useDispatch();
   const currentSort = useSelector((state) => state.filters.currentSort);
 
-  // закртыие на клик outside ???
+  useEffect(() => {
+    const handleClick = (Event) => {
+      // не посмотрел для всех ли браузеров, но в хроме работает через Event.composedPath()
+      if (!Event.composedPath().includes(sortRef.current)) {
+        setIsPopupOpen(false);
+      }
+    };
+    document.body.addEventListener('click', handleClick);
+
+    return () => document.body.removeEventListener('click', handleClick);
+  }, [isPopupOpen]);
 
   return (
     <div className={classes.sort}>
       <div
         className={classes.sort__clickable}
         onClick={() => {
-          setIsPopupOpen(true);
-        }}>
+          setIsPopupOpen(!isPopupOpen);
+        }}
+        ref={sortRef}>
         <TbArrowsSort />
         <span className={`${classes.sort__selected} ${classes.sort__selected_active}`}>
           {currentSort.name}
