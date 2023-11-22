@@ -1,7 +1,7 @@
 // --- СТРАНИЦА ТОВАРА --- //
 import classes from './detailed.module.scss';
 
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchSingleProduct } from '../../services/fetchProducts';
@@ -21,6 +21,8 @@ const Detailed = () => {
     (state) => state.product.product,
   );
   const isLoading = useSelector((state) => state.product.isLoading);
+
+  const handleInput = useCallback((e) => setCount(e.target.value), [count]);
 
   useEffect(() => {
     dispatch(setIsLoadingSingleProductAction(true));
@@ -63,7 +65,7 @@ const Detailed = () => {
                 className={classes.product__count}
                 type="number"
                 value={count}
-                onChange={(e) => setCount(e.target.value)}
+                onChange={handleInput}
               />
             </p>
             <button

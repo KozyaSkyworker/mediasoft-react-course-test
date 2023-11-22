@@ -1,6 +1,6 @@
 import classes from './home.module.scss';
 
-import { useEffect } from 'react';
+import { useEffect, useMemo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { fetchProducts } from '../../services/fetchProducts';
@@ -28,7 +28,7 @@ const Home = () => {
   }, [currentCategory, currentSort]);
 
   return (
-    <>
+    <div className={classes.home}>
       <h1>Каталог товаров</h1>
       <div className={classes.content}>
         <Sidebar />
@@ -45,7 +45,7 @@ const Home = () => {
           </div>
         </section>
       </div>
-    </>
+    </div>
   );
 };
 

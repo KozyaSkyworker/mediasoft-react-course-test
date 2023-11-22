@@ -25,14 +25,6 @@ const Header = () => {
           </Link>
           <ul className={classes.header__list}>
             <li className={classes.header__item}>
-              <Link to="/shop/favorites">
-                Отложенные
-                <MdFavorite />
-                <span> (???)</span>
-              </Link>
-            </li>
-
-            <li className={classes.header__item}>
               <Link to="/shop/cart">
                 Корзина
                 <FaCartShopping />
@@ -63,14 +55,6 @@ const Header = () => {
                   to="/shop/cart"
                   onClick={() => setIsMenuOpen(false)}>
                   Корзина <FaCartShopping />
-                </Link>
-              </li>
-              <li className={classes.menu__item}>
-                <Link
-                  className={classes.menu__link}
-                  to="/shop/favorites"
-                  onClick={() => setIsMenuOpen(false)}>
-                  Отложенные <MdFavorite />
                 </Link>
               </li>
               <li className={classes.menu__item}>

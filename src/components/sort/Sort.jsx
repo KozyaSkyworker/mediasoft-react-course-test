@@ -31,7 +31,6 @@ const sortItems = [
 
 const Sort = memo(function Sort() {
   const sortRef = useRef(0);
-  console.log(sortRef);
   const [isPopupOpen, setIsPopupOpen] = useState(false);
 
   const dispatch = useDispatch();

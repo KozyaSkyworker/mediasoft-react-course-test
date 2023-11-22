@@ -4,11 +4,11 @@ import Header from './components/header/Header';
 
 import { Routes, Route } from 'react-router-dom';
 import { Suspense, lazy } from 'react';
-import Information from './routes/information/Information';
-import Cart from './routes/cart/Cart';
 
 const Home = lazy(() => import('./routes/home/Home'));
 const Detailed = lazy(() => import('./routes/detailed/Detailed'));
+const Information = lazy(() => import('./routes/information/Information'));
+const Cart = lazy(() => import('./routes/cart/Cart'));
 const NotFound = lazy(() => import('./routes/notfound/NotFound'));
 
 function App() {

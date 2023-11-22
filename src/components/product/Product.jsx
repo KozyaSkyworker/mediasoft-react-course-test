@@ -3,12 +3,18 @@ import classes from './product.module.scss';
 import { useInView } from 'react-intersection-observer';
 import { FaCartShopping } from 'react-icons/fa6';
 import { MdFavorite } from 'react-icons/md';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { addProductToCart } from '../../middlewares/cartMiddleware';
+import { toggleFavoritesItem } from '../../middlewares/favoritesMiddleware';
+import { memo } from 'react';
 
 const Product = ({ id, title, price, thumbnail }) => {
   const dispatch = useDispatch();
+
+  console.log('1');
+
+  const favoritesItemArray = useSelector((state) => state.favorites.items);
 
   const { ref, inView } = useInView({
     threshold: 0.5,
@@ -37,7 +43,13 @@ const Product = ({ id, title, price, thumbnail }) => {
           {' '}
           <FaCartShopping />
         </button>
-        <button className={classes.product__favorites}>
+        <button
+          className={`${classes.product__favorites} ${
+            favoritesItemArray.indexOf(id) >= 0 ? classes.product__favorites_active : ''
+          }`}
+          onClick={() => {
+            dispatch(toggleFavoritesItem(id));
+          }}>
           <MdFavorite />
         </button>
       </div>
@@ -45,4 +57,4 @@ const Product = ({ id, title, price, thumbnail }) => {
   );
 };
 
-export default Product;
+export default memo(Product);
