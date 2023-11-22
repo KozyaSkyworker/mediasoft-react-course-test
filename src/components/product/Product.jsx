@@ -23,7 +23,7 @@ const Product = ({ id, title, price, thumbnail }) => {
 
   return (
     <div className={classes.product} ref={ref}>
-      <Link to={`/shop/products/${id}`} className={classes.product__link}>
+      <Link to={`/mediasoft-react-course-test/products/${id}`} className={classes.product__link}>
         {inView ? (
           <img className={classes.product__img} src={thumbnail} width={100} alt={title} />
         ) : (
