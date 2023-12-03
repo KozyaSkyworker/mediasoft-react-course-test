@@ -9,6 +9,7 @@ import {
   deleteProductFromCart,
   incrementProductQuantity,
 } from '../../middlewares/cartMiddleware';
+import { useMemo } from 'react';
 
 const Cart = () => {
   console.log('CART rerender');
@@ -17,12 +18,16 @@ const Cart = () => {
   const items = useSelector((state) => state.cartItems.items);
 
   // два прохода по массиву. зачем?
-  const totalQuantity = items.reduce((sum, current) => {
-    return sum + current.quantity;
-  }, 0);
-  const totalPrice = items.reduce((sum, current) => {
-    return sum + current.pricePerOne * current.quantity;
-  }, 0);
+  const totalQuantity = useMemo(() => {
+    items.reduce((sum, current) => {
+      return sum + current.quantity;
+    }, 0);
+  }, items);
+  const totalPrice = useMemo(() => {
+    items.reduce((sum, current) => {
+      return sum + current.pricePerOne * current.quantity;
+    }, 0);
+  }, items);
 
   return (
     <div className={classes.cart}>
