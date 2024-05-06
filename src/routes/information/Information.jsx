@@ -19,12 +19,12 @@ const Information = () => {
       ...formData,
       [e.target.name]: e.target.value,
     });
-    setCookies('form', formData, { path: '/shop/info' });
+    setCookies('form', formData, { path: '/mediasoft-react-course-test/info' });
   };
 
   useEffect(() => {
     if (cookies.form == undefined) {
-      setCookies('form', formData, { path: '/shop/info' });
+      setCookies('form', formData, { path: '/mediasoft-react-course-test/info' });
     } else {
       setFormData(cookies.form);
     }

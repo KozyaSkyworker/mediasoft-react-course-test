@@ -20,12 +20,12 @@ const Header = () => {
     <header className={classes.header}>
       <div className="container">
         <div className={classes.header__top}>
-          <Link className={classes.header__logo} to="/shop/">
+          <Link className={classes.header__logo} to="/mediasoft-react-course-test/">
             <img src={logo} alt="logo" height={20} />
           </Link>
           <ul className={classes.header__list}>
             <li className={classes.header__item}>
-              <Link to="/shop/cart">
+              <Link to="/mediasoft-react-course-test/cart">
                 Корзина
                 <FaCartShopping />
                 <span> ({productsQuantity})</span>
@@ -44,7 +44,7 @@ const Header = () => {
               <li className={classes.menu__item}>
                 <Link
                   className={classes.menu__link}
-                  to="/shop/"
+                  to="/mediasoft-react-course-test/"
                   onClick={() => setIsMenuOpen(false)}>
                   Главная <IoMdHome />
                 </Link>
@@ -52,7 +52,7 @@ const Header = () => {
               <li className={classes.menu__item}>
                 <Link
                   className={classes.menu__link}
-                  to="/shop/cart"
+                  to="/mediasoft-react-course-test/cart"
                   onClick={() => setIsMenuOpen(false)}>
                   Корзина <FaCartShopping />
                 </Link>
@@ -60,7 +60,7 @@ const Header = () => {
               <li className={classes.menu__item}>
                 <Link
                   className={classes.menu__link}
-                  to="/shop/info"
+                  to="/mediasoft-react-course-test/info"
                   onClick={() => setIsMenuOpen(false)}>
                   Основная информация
                 </Link>
@@ -72,7 +72,7 @@ const Header = () => {
           <nav className={classes.header__navigation}>
             <ul className={classes.header__list}>
               <li className={classes.header__item}>
-                <Link className={classes.header__link} to="/shop/info">
+                <Link className={classes.header__link} to="/mediasoft-react-course-test/info">
                   Основная информация
                 </Link>
               </li>

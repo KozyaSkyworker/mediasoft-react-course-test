@@ -20,35 +20,35 @@ function App() {
           <div className="main__inner">
             <Routes>
               <Route
-                path="shop/"
+                path="mediasoft-react-course-test/"
                 element={
                   <Suspense fallback={<p>Загрузка...</p>}>
                     <Home />
                   </Suspense>
                 }></Route>
               <Route
-                path="shop/products/:productId"
+                path="mediasoft-react-course-test/products/:productId"
                 element={
                   <Suspense fallback={<p>Загрузка...</p>}>
                     <Detailed />
                   </Suspense>
                 }></Route>
               <Route
-                path="shop/info"
+                path="mediasoft-react-course-test/info"
                 element={
                   <Suspense fallback={<p>Загрузка...</p>}>
                     <Information />
                   </Suspense>
                 }></Route>
               <Route
-                path="shop/cart"
+                path="mediasoft-react-course-test/cart"
                 element={
                   <Suspense fallback={<p>Загрузка...</p>}>
                     <Cart />
                   </Suspense>
                 }></Route>
               <Route
-                path="shop/*"
+                path="mediasoft-react-course-test/*"
                 element={
                   <Suspense fallback={<p>Загрузка...</p>}>
                     <NotFound />

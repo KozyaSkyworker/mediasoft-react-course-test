@@ -35,7 +35,7 @@ const Footer = () => {
           <div className={classes.footer__bot}>
             <ul className={classes.footer__list}>
               <li className={classes.footer__item}>
-                <Link className={classes.footer__link} to="/shop/info">
+                <Link className={classes.footer__link} to="/mediasoft-react-course-test/info">
                   Основная информация
                 </Link>
               </li>

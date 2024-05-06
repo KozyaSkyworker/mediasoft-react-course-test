@@ -20,6 +20,14 @@
         font-size: 2rem;
     }
 
+    &__fakeimg{
+        background-color: teal;
+        border-radius: 5px;
+        width: 150px;
+        height: 75%;
+        margin: 0 auto;
+    }
+
     &__items{
         margin: 1rem 0;
     }
