@@ -6,7 +6,7 @@ import {
 export const toggleFavoritesItem = (id) => {
   return (dispatch, getState) => {
     console.log('BEFORE FAVORITES TOGGLE PRODUCT: ', getState());
-    if (getState().favorites.items.indexOf(id) >= 0) {
+    if (getState().favorites.favItems.indexOf(id) >= 0) {
       dispatch(deleteFavoritesItemAction(id));
     } else {
       dispatch(addFavoritesItemAction(id));

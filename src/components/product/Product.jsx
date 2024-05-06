@@ -12,9 +12,7 @@ import { memo } from 'react';
 const Product = ({ id, title, price, thumbnail }) => {
   const dispatch = useDispatch();
 
-  console.log('1');
-
-  const favoritesItemArray = useSelector((state) => state.favorites.items);
+  const favoritesItemArray = useSelector((state) => state.favorites.favItems);
 
   const { ref, inView } = useInView({
     threshold: 0.5,
@@ -25,7 +23,7 @@ const Product = ({ id, title, price, thumbnail }) => {
     <div className={classes.product} ref={ref}>
       <Link to={`/mediasoft-react-course-test/products/${id}`} className={classes.product__link}>
         {inView ? (
-          <img className={classes.product__img} src={thumbnail} width={100} alt={title} />
+          <div className={classes.product__fakeimg}>{title} (картинки сломались :) )</div>
         ) : (
           <div className={classes.product__img_skeleton}></div>
         )}

@@ -23,12 +23,20 @@
         object-fit: cover;
         height: 75%;
     }
-
+    
+    &__fakeimg{
+        background-color: teal;
+        border-radius: 5px;
+        width: 150px;
+        height: 75%;
+        margin: 0 auto;
+    }
     &__img_skeleton{
         background-color: #ccc;
         border-radius: 5px;
         width: 150px;
         height: 75%;
+        margin: 0 auto;
     }
 
     &__title{
