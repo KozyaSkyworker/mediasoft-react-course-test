@@ -17,17 +17,12 @@ const Cart = () => {
 
   const items = useSelector((state) => state.cartItems.items);
 
-  // два прохода по массиву. зачем?
-  const totalQuantity = useMemo(() => {
-    items.reduce((sum, current) => {
-      return sum + current.quantity;
-    }, 0);
-  }, items);
-  const totalPrice = useMemo(() => {
-    items.reduce((sum, current) => {
-      return sum + current.pricePerOne * current.quantity;
-    }, 0);
-  }, items);
+  const totalQuantity = items.reduce((sum, current) => {
+    return sum + current.quantity;
+  }, 0);
+  const totalPrice = items.reduce((sum, current) => {
+    return sum + current.pricePerOne * current.quantity;
+  }, 0);
 
   return (
     <div className={classes.cart}>
